@@ -1,0 +1,56 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    >
+
+  <adapter
+     for="opencore.interfaces.IOpenSiteRoot"
+     provides="opencore.tagging.interfaces.ITagQuery"
+     factory="opencore.tagging.content.DCSubjectTagQuery"
+     />
+  <adapter
+     for="opencore.interfaces.IOpenProject"
+     provides="opencore.tagging.interfaces.ITaggable"
+     factory="opencore.tagging.content.DCSubjectTaggable"
+     />
+  <adapter
+     for="opencore.interfaces.IOpenProject"
+     provides="opencore.tagging.interfaces.ITaggable"
+     factory="opencore.tagging.content.DCSubjectTaggable"
+     />
+  <utility
+     factory="opencore.tagging.content.SitewideTagVocabularyValidator"
+     provides="opencore.tagging.interfaces.ITagValidator"
+     />
+
+  <browser:page
+     for="opencore.interfaces.IOpenSiteRoot"
+     class="opencore.tagging.browser.TagQueryView"
+     permission="zope2.View"
+     template="tag-query.pt"
+     name="search-by-tag"
+     />
+
+  <! -- i don't like registering these on such specific managers.
+        is there a way for content to share managers? or do i need
+        to repeat the registration?  -->
+
+  <browser:viewlet
+     for="opencore.tagging.interfaces.ITaggable"
+     class="opencore.tagging.browser.TagViewlet"
+     permission="zope2.View"
+     template="tag-list.pt"
+     manager="opencore.project.browser.interfaces.IProjectPrefs"
+     name="tag.list"
+     />
+  <browser:viewlet
+     for="opencore.tagging.interfaces.ITaggable"
+     class="opencore.tagging.browser.TagEditViewlet"
+     permission="cmf.ModifyPortalContent"
+     template="tag-edit.pt"
+     manager="opencore.project.browser.interfaces.IProjectSidebar"
+     name="tag.edit"
+     />
+
+</configure>

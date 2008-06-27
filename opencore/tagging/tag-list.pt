@@ -1,0 +1,5 @@
+<ul tal:define="tags context/tags">
+  <li tal:repeat="tag tags">
+    <a tal:attributes="href python:view.search_link(tag)" tal:content="tag"></a>
+  </li>
+</ul>
