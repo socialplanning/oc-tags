@@ -3,6 +3,7 @@ from Products.Five.viewlet.viewlet import ViewletBase
 from opencore.browser.base import BaseView
 from opencore.tagging.interfaces import ITaggable
 from opencore.tagging.interfaces import ITagValidator
+from opencore.tagging.interfaces import ITagQuery
 from zope.component import getUtility
 
 class TagViewlet(ViewletBase):
@@ -62,16 +63,13 @@ class TagEditViewlet(ViewletBase):
         return errors
 
     def save(self):
-        add = self.request.form.get('tag.add', '')
-        remove = self.request.form.get('tag.remove', '')
-
-        add = add.split(',')
-        for tag in add:
+        for tag in self.tags_to_add:
             self.taggable.append(tag)
+            print tag
 
-        remove = remove.split(',')
-        for tag in remove:
+        for tag in self.tags_to_remove:
             self.taggable.remove(tag)
+            print tag
 
 class TagQueryView(BaseView):
 
