@@ -31,6 +31,10 @@ class DCSubjectTaggable(object):
         subject = tuple(subject)
         self.context.setSubject(subject)
         self.context.reindexObject('Subject')
+
+    def update(self, tags):
+        self.context.setSubject(tuple(tags))
+        self.context.reindexObject('Subject')
         
 class DCSubjectTagQuery(object):
     implements(ITagQuery)    
@@ -49,6 +53,11 @@ class DCSubjectTagQuery(object):
 class SitewideTagVocabularyValidator(object):
     implements(ITagValidator)
 
+    def tags(self):
+        config = getUtility(IProvideSiteConfig)
+        tags = config.get('taglist').split(',')
+        return tags
+    
     def can_add(self, tag):
         config = getUtility(IProvideSiteConfig)
         tags = config.get('taglist').split(',')

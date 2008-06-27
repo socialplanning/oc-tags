@@ -35,41 +35,27 @@ class TagEditViewlet(ViewletBase):
         self.context = context
         self.taggable = ITaggable(context)
         self.request = request
-        
-    @property
-    def tags_to_add(self):
-        tags = self.request.form.get('tag.add', '')
-        if not tags:
-            return []
-        return [tags]
 
-    @property
-    def tags_to_remove(self):
-        tags = self.request.form.get('tag.remove', '')
-        if not tags:
-            return []
-        return [tags]
-    
+    def tags(self):
+        validator = getUtility(ITagValidator)
+        return validator.tags()
+
+    def selected_tags(self):
+        tags = self.request.form.get('tag')
+        return list(tags)
+        
     def validate(self):
         validator = getUtility(ITagValidator)
         errors = {}
-        for tag in self.tags_to_add:
+        for tag in self.selected_tags():
+            print tag
             is_valid = validator.can_add(tag)
             if not is_valid:
-                errors['tag.add'] = "Invalid tag"
-        for tag in self.tags_to_remove:
-            if not self.taggable.has_tag(tag):
-                errors['tag.remove'] = "Invalid tag"
+                errors['tag'] = "Invalid tag"
         return errors
 
     def save(self):
-        for tag in self.tags_to_add:
-            self.taggable.append(tag)
-            print tag
-
-        for tag in self.tags_to_remove:
-            self.taggable.remove(tag)
-            print tag
+        self.taggable.update(self.selected_tags())
 
 class TagQueryView(BaseView):
 
