@@ -6,7 +6,7 @@ from opencore.tagging.interfaces import ITagValidator
 
 class TagViewlet(ViewletBase):
 
-    title = "Tags"
+    title = "Taglist"
     sort_order = 0
     render = ZopeTwoPageTemplateFile('tag-list.pt')
     
@@ -33,7 +33,7 @@ class TagEditViewlet(ViewletBase):
         self.context = context
         self.taggable = ITaggable(context)
         self.request = request
-
+        
     @property
     def tags_to_add(self):
         return self.request.form.get('tag.add', '')
@@ -54,9 +54,6 @@ class TagEditViewlet(ViewletBase):
                 errors['tag.remove'] = "Invalid tag"
         return errors
 
-    def render(self):
-        pass
-    
     def save(self):
         add = self.request.form.get('tag.add', '')
         remove = self.request.form.get('tag.remove', '')
