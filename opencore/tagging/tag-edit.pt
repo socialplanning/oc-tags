@@ -1,5 +1,3 @@
-<fieldset class="oc-boxy">
- <label>Edit tags</label>
  <tal:for repeat="tag view/tags">
   <input type="checkbox" name="tag"
          tal:attributes="checked python:view.taggable.has_tag(tag);
@@ -8,4 +6,3 @@
    />
   <label tal:attributes="for string:tag.${tag}" tal:content="tag"></label>
  </tal:for>
-</fieldset>
