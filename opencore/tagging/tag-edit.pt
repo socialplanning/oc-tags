@@ -1,7 +1,11 @@
 <fieldset class="oc-boxy">
  <label for="tag.add">Add a new tag</label>
  <input type="text" id="tag.add" name="tag.add" />
+ <span class="oc-form-error"
+       tal:content="view/errors/tag.add | nothing"></span>
 
  <label for="tag.remove">Remove a tag</label>
  <input type="text" id="tag.remove" name="tag.remove" />
+ <span class="oc-form-error"
+       tal:content="view/errors/tag.remove | nothing"></span>
 </fieldset>
