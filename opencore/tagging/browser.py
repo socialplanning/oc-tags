@@ -1,10 +1,11 @@
+from Products.Five.viewlet.viewlet import ViewletBase
 from opencore.browser.base import BaseView
 from opencore.tagging.interfaces import ITaggable
 from opencore.tagging.interfaces import ITagValidator
 
-class TagViewlet(object):
+class TagViewlet(ViewletBase):
     
-    def __init__(self, context, request):
+    def __init__(self, context, request, view, manager):
         self.context = ITaggable(context)
 
     def tags(self):
@@ -16,9 +17,10 @@ class TagViewlet(object):
         #     TagQueryView could then search within current context
         return "/@@search-by-tag?tag=%s" % tag 
 
-class TagEditViewlet(object):
+class TagEditViewlet(ViewletBase):
 
-    def __init__(self, context, request):
+    def __init__(self, context, request, view, manager):
+        import pdb; pdb.set_trace()
         self.context = ITaggable(context)
         self.request = request
 
