@@ -23,13 +23,15 @@ class DCSubjectTaggable(object):
         subject.append(tag)
         subject = tuple(subject)
         self.context.setSubject(subject)
-
+        self.context.reindexObject('Subject')
+        
     def remove(self, tag):
         subject = list(self.context.Subject())
         subject.remove(tag)
         subject = tuple(subject)
         self.context.setSubject(subject)
-
+        self.context.reindexObject('Subject')
+        
 class DCSubjectTagQuery(object):
     implements(ITagQuery)    
 
