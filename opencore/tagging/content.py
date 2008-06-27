@@ -13,16 +13,22 @@ class DCSubjectTaggable(object):
         self.context = context
 
     def tags(self):
-        return self.context.Subject() #??
+        return self.context.Subject()
 
     def has_tag(self, tag):
-        return tag in self.context.Subject() #??
+        return tag in self.context.Subject()
 
     def append(self, tag):
-        self.context.Subject().append(tag) #??
+        subject = list(self.context.Subject())
+        subject.append(tag)
+        subject = tuple(subject)
+        self.context.setSubject(subject)
 
     def remove(self, tag):
-        self.context.Subject().remove(tag) #??
+        subject = list(self.context.Subject())
+        subject.remove(tag)
+        subject = tuple(subject)
+        self.context.setSubject(subject)
 
 class DCSubjectTagQuery(object):
     implements(ITagQuery)    
