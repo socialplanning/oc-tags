@@ -3,6 +3,7 @@ from opencore.tagging.interfaces import ITaggable
 from opencore.tagging.interfaces import ITagQuery
 from opencore.tagging.interfaces import ITagValidator
 from opencore.utility.interfaces import IProvideSiteConfig
+from zope.component import getUtility
 from zope.interface import implements
 
 class DCSubjectTaggable(object):

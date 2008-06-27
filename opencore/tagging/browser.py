@@ -3,6 +3,7 @@ from Products.Five.viewlet.viewlet import ViewletBase
 from opencore.browser.base import BaseView
 from opencore.tagging.interfaces import ITaggable
 from opencore.tagging.interfaces import ITagValidator
+from zope.component import getUtility
 
 class TagViewlet(ViewletBase):
 
