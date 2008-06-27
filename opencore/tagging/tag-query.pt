@@ -1,11 +1,19 @@
-<html>
- <head>Search results</head>
-<body>
- <ul tal:define="results view/results">
-  <li tal:repeat="result results">
-   <a tal:attributes="href result/getURL"
-      tal:content="result/getId"></a>
-  </li>
- </ul>
-</body>
+<html i18n:domain="opencore" metal:use-macro="here/@@standard_macros/master">
+ <head>
+   <title metal:fill-slot="title">
+     Search results
+   </title>
+ </head>
+ <body>
+  <div metal:fill-slot="content">
+   <div id="oc-content-main">
+    <ul tal:define="results view/results">
+     <li tal:repeat="result results">
+       <a tal:attributes="href result/getURL"
+          tal:content="result/getId"></a>
+     </li>
+    </ul>
+   </div>
+  </div>
+ </body>
 </html>
