@@ -32,19 +32,17 @@
         to repeat the registration?  -->
 
   <browser:viewlet
-     for="opencore.tagging.interfaces.ITaggable"
+     for="*"
      class="opencore.tagging.browser.TagViewlet"
      permission="zope2.View"
-     template="tag-list.pt"
-     manager="opencore.project.browser.interfaces.IProjectPrefs"
+     manager="opencore.project.browser.interfaces.IProjectSidebar"
      name="tag.list"
      />
   <browser:viewlet
-     for="opencore.tagging.interfaces.ITaggable"
+     for="*"
      class="opencore.tagging.browser.TagEditViewlet"
      permission="cmf.ModifyPortalContent"
-     template="tag-edit.pt"
-     manager="opencore.project.browser.interfaces.IProjectSidebar"
+     manager="opencore.project.browser.interfaces.IProjectPrefs"
      name="tag.edit"
      />
 

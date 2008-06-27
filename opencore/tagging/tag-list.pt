@@ -1,4 +1,4 @@
-<ul tal:define="tags context/tags">
+<ul tal:define="tags view/taggable/tags">
   <li tal:repeat="tag tags">
     <a tal:attributes="href python:view.search_link(tag)" tal:content="tag"></a>
   </li>
