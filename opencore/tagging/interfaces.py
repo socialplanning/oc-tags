@@ -22,6 +22,9 @@ class ITagQuery(Interface):
     search tags->objects
     """
 
+    def list():
+        """ return a list of all unique tags with which content is presently tagged """
+        
     def findall(tag):
         """ return all ITaggables which have ``tag`` """
 

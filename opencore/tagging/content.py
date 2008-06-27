@@ -38,6 +38,10 @@ class DCSubjectTagQuery(object):
     def __init__(self, site):
         self.site = site
 
+    def list(self):
+        cat = getToolByName(self.site, 'portal_catalog')
+        return cat.uniqueValuesFor('Subject')
+    
     def findall(self, tag):
         cat = getToolByName(self.site, 'portal_catalog')
         return cat(Subject=tag) #??
