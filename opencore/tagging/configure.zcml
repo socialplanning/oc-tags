@@ -10,12 +10,7 @@
      factory="opencore.tagging.content.DCSubjectTagQuery"
      />
   <adapter
-     for="opencore.interfaces.IOpenProject"
-     provides="opencore.tagging.interfaces.ITaggable"
-     factory="opencore.tagging.content.DCSubjectTaggable"
-     />
-  <adapter
-     for="opencore.interfaces.IOpenProject"
+     for="opencore.interfaces.IProject"
      provides="opencore.tagging.interfaces.ITaggable"
      factory="opencore.tagging.content.DCSubjectTaggable"
      />
@@ -32,7 +27,7 @@
      name="search-by-tag"
      />
 
-  <! -- i don't like registering these on such specific managers.
+  <!-- i don't like registering these on such specific managers.
         is there a way for content to share managers? or do i need
         to repeat the registration?  -->
 
