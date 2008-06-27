@@ -1,9 +1,7 @@
 <fieldset class="oc-boxy">
  <label for="tag.add">Add a new tag</label>
- <input type="text" id="tag.add" name="tag.add">
- </input>
+ <input type="text" id="tag.add" name="tag.add" />
 
  <label for="tag.remove">Remove a tag</label>
- <input type="text" id="tag.remove" name="tag.remove">
- </input> 
+ <input type="text" id="tag.remove" name="tag.remove" />
 </fieldset>
