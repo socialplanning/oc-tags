@@ -37,12 +37,18 @@ class TagEditViewlet(ViewletBase):
         
     @property
     def tags_to_add(self):
-        return self.request.form.get('tag.add', '')
+        tags = self.request.form.get('tag.add', '')
+        if not tags:
+            return []
+        return [tags]
 
     @property
     def tags_to_remove(self):
-        return self.request.form.get('tag.remove', '')
-
+        tags = self.request.form.get('tag.remove', '')
+        if not tags:
+            return []
+        return [tags]
+    
     def validate(self):
         validator = getUtility(ITagValidator)
         errors = {}
