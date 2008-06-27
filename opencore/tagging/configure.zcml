@@ -31,8 +31,11 @@
         is there a way for content to share managers? or do i need
         to repeat the registration?  -->
 
+  <!-- i also don't like registering them for *. should define a
+       marker interface that signals valid adaptation to ITaggable.
+       or call that ITaggable and rename the adapted interface? -->
   <browser:viewlet
-     for="*"
+     for="*" 
      class="opencore.tagging.browser.TagViewlet"
      permission="zope2.View"
      manager="opencore.project.browser.interfaces.IProjectSidebar"
