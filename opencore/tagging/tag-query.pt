@@ -2,7 +2,7 @@
  <head>Search results</head>
 <body>
  <ul tal:define="results view/results">
-  <li tal:repeat="results">
+  <li tal:repeat="result results">
    <a tal:attributes="href result/URL"
       tal:content="result/getId"></a>
   </li>
