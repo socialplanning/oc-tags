@@ -10,6 +10,11 @@
      factory="opencore.tagging.content.DCSubjectTagQuery"
      />
   <adapter
+     for="opencore.interfaces.adding.IAddProject"
+     provides="opencore.tagging.interfaces.ITaggable"
+     factory="opencore.tagging.content.DCSubjectTaggable"
+     />
+  <adapter
      for="opencore.interfaces.IProject"
      provides="opencore.tagging.interfaces.ITaggable"
      factory="opencore.tagging.content.DCSubjectTaggable"
@@ -31,20 +36,29 @@
         is there a way for content to share managers? or do i need
         to repeat the registration?  -->
 
-  <!-- i also don't like registering them for *. should define a
-       marker interface that signals valid adaptation to ITaggable.
-       or call that ITaggable and rename the adapted interface? -->
+  <!-- i also don't like registering them for IProject & IAddProject. 
+       should define a marker interface that signals valid 
+       adaptation to ITaggable. or call that ITaggable and rename 
+       the adapted interface? -->
+
   <browser:viewlet
-     for="*" 
+     for="opencore.interfaces.IProject" 
      class="opencore.tagging.browser.TagViewlet"
      permission="zope2.View"
      manager="opencore.project.browser.interfaces.IProjectSidebar"
      name="tag.list"
      />
   <browser:viewlet
-     for="*"
+     for="opencore.interfaces.IProject"
      class="opencore.tagging.browser.TagEditViewlet"
      permission="cmf.ModifyPortalContent"
+     manager="opencore.project.browser.interfaces.IProjectPrefs"
+     name="tag.edit"
+     />
+  <browser:viewlet
+     for="opencore.interfaces.adding.IAddProject"
+     class="opencore.tagging.browser.TagEditViewlet"
+     permission="zope2.View"
      manager="opencore.project.browser.interfaces.IProjectPrefs"
      name="tag.edit"
      />

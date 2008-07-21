@@ -41,14 +41,15 @@ class TagEditViewlet(ViewletBase):
         return validator.tags()
 
     def selected_tags(self):
-        tags = self.request.form.get('tag')
-        return list(tags)
+        tags = self.request.form.get('tag',[])
+	if tags.__class__ == str:
+	    tags=[tags]
+        return tags
         
     def validate(self):
         validator = getUtility(ITagValidator)
         errors = {}
         for tag in self.selected_tags():
-            print tag
             is_valid = validator.can_add(tag)
             if not is_valid:
                 errors['tag'] = "Invalid tag"
