@@ -42,7 +42,7 @@ class TagEditViewlet(ViewletBase):
 
     def selected_tags(self):
         tags = self.request.form.get('tag',[])
-	if tags.__class__ == str:
+        if isinstance(tags, basestring):
 	    tags=[tags]
         return tags
         
