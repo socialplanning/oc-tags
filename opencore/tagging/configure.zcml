@@ -53,7 +53,7 @@
      for="opencore.interfaces.IProject"
      class="opencore.tagging.browser.TagEditViewlet"
      permission="cmf.ModifyPortalContent"
-     manager="opencore.project.browser.interfaces.IProjectPrefs"
+     manager="opencore.browser.interfaces.IEditForm"
      name="tag.edit"
      template="tag-edit.pt"
      />
