@@ -45,7 +45,7 @@
      for="opencore.interfaces.IProject" 
      class="opencore.tagging.browser.TagViewlet"
      permission="zope2.View"
-     manager="opencore.project.browser.interfaces.IProjectSidebar"
+     manager="opencore.browser.interfaces.ISidebar"
      name="tag.list"
      />
   <browser:viewlet
