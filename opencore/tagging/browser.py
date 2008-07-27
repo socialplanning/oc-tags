@@ -10,7 +10,6 @@ class TagViewlet(ViewletBase):
 
     title = "Taglist"
     sort_order = 0
-    render = ZopeTwoPageTemplateFile('tag-list.pt')
     
     def __init__(self, context, request, view, manager):
         self.taggable = ITaggable(context)

@@ -46,6 +46,7 @@
      class="opencore.tagging.browser.TagViewlet"
      permission="zope2.View"
      manager="opencore.browser.interfaces.ISidebar"
+     template="tag-list.pt"
      name="tag.list"
      />
   <browser:viewlet
