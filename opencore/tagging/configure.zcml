@@ -55,6 +55,7 @@
      permission="cmf.ModifyPortalContent"
      manager="opencore.project.browser.interfaces.IProjectPrefs"
      name="tag.edit"
+     template="tag-edit.pt"
      />
   <browser:viewlet
      for="opencore.interfaces.adding.IAddProject"
@@ -62,6 +63,7 @@
      permission="zope2.View"
      manager="opencore.project.browser.interfaces.IProjectPrefs"
      name="tag.edit"
+     template="tag-edit.pt"
      />
 
 </configure>

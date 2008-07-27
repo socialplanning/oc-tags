@@ -28,7 +28,6 @@ class TagEditViewlet(ViewletBase):
 
     title = "Tags"
     sort_order = 1
-    render = ZopeTwoPageTemplateFile('tag-edit.pt')
 
     def __init__(self, context, request, view, manager):
         self.context = context
