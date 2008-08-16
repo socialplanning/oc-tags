@@ -32,11 +32,7 @@
      name="search-by-tag"
      />
 
-  <!-- i don't like registering these on such specific managers.
-        is there a way for content to share managers? or do i need
-        to repeat the registration?  -->
-
-  <!-- i also don't like registering them for IProject & IAddProject. 
+  <!-- i don't like registering them for IProject & IAddProject. 
        should define a marker interface that signals valid 
        adaptation to ITaggable. or call that ITaggable and rename 
        the adapted interface? -->
@@ -53,7 +49,7 @@
      for="opencore.interfaces.IProject"
      class="opencore.tagging.browser.TagEditViewlet"
      permission="cmf.ModifyPortalContent"
-     manager="opencore.browser.interfaces.IEditForm"
+     manager="opencore.browser.editform.IEditForm"
      name="tag.edit"
      template="tag-edit.pt"
      />
@@ -61,7 +57,7 @@
      for="opencore.interfaces.adding.IAddProject"
      class="opencore.tagging.browser.TagEditViewlet"
      permission="zope2.View"
-     manager="opencore.browser.interfaces.IEditForm"
+     manager="opencore.browser.editform.IEditForm"
      name="tag.edit"
      template="tag-edit.pt"
      />

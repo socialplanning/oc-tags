@@ -1,6 +1,6 @@
  <tal:for repeat="tag view/tags">
   <input type="checkbox" name="tag"
-         tal:attributes="checked python:view.taggable.has_tag(tag);
+         tal:attributes="checked python:view.taggable(context).has_tag(tag);
                          value tag;
                          id string:tag.${tag};"
    />

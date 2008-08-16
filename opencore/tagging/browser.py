@@ -1,12 +1,12 @@
 from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile
-from Products.Five.viewlet.viewlet import ViewletBase
 from opencore.browser.base import BaseView
+from opencore.browser.editform import EditFormViewlet
 from opencore.tagging.interfaces import ITaggable
 from opencore.tagging.interfaces import ITagValidator
 from opencore.tagging.interfaces import ITagQuery
 from zope.component import getUtility
 
-class TagViewlet(ViewletBase):
+class TagViewlet(object):
 
     title = "Taglist"
     sort_order = 0
@@ -24,37 +24,35 @@ class TagViewlet(ViewletBase):
         #     TagQueryView could then search within current context
         return "/@@search-by-tag?tag=%s" % tag 
 
-class TagEditViewlet(ViewletBase):
+class TagEditViewlet(EditFormViewlet):
 
     title = "Tags"
     sort_order = 1
 
-    def __init__(self, context, request, view, manager):
-        self.context = context
-        self.taggable = ITaggable(context)
-        self.request = request
+    def taggable(self, context):
+        return ITaggable(context)
 
     def tags(self):
         validator = getUtility(ITagValidator)
         return validator.tags()
 
-    def selected_tags(self):
-        tags = self.request.form.get('tag',[])
+    def selected_tags(self, request):
+        tags = request.form.get('tag',[])
         if isinstance(tags, basestring):
 	    tags=[tags]
         return tags
         
-    def validate(self):
+    def validate(self, context, request):
         validator = getUtility(ITagValidator)
         errors = {}
-        for tag in self.selected_tags():
+        for tag in self.selected_tags(request):
             is_valid = validator.can_add(tag)
             if not is_valid:
                 errors['tag'] = "Invalid tag"
         return errors
 
-    def save(self):
-        self.taggable.update(self.selected_tags())
+    def save(self, context, request):
+        ITaggable(context).update(self.selected_tags(request))
 
 class TagQueryView(BaseView):
 
