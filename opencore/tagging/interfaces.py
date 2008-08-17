@@ -1,5 +1,8 @@
 from zope.interface import Interface
 
+class ICanBeTagged(Interface):
+    """ marker interface for objects which can be adapted to ITaggable """
+
 class ITaggable(Interface):
     """
     a taggable object. should be IList.

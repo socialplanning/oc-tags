@@ -30,6 +30,14 @@ class TagEditViewlet(EditFormViewlet):
     sort_order = 1
 
     def taggable(self, context):
+        """
+        adapts the context to ITaggable, for use in templates
+
+        i'd prefer to use a tales namespace, i think:
+          context/adapters:ITaggable
+          context/adapters:IGeoreferenced
+        might be interesting?
+        """
         return ITaggable(context)
 
     def tags(self):
@@ -60,4 +68,4 @@ class TagQueryView(BaseView):
         query = self.request.form.get('tag')
         cat = ITagQuery(self.portal)
         return cat.findall(query)
-        
+

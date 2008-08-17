@@ -9,19 +9,21 @@
      provides="opencore.tagging.interfaces.ITagQuery"
      factory="opencore.tagging.content.DCSubjectTagQuery"
      />
+  <utility
+     factory="opencore.tagging.content.SitewideTagVocabularyValidator"
+     provides="opencore.tagging.interfaces.ITagValidator"
+     />
+
   <adapter
      for="opencore.interfaces.adding.IAddProject"
      provides="opencore.tagging.interfaces.ITaggable"
      factory="opencore.tagging.content.DCSubjectTaggable"
      />
+
   <adapter
-     for="opencore.interfaces.IProject"
+     for="opencore.framework.IExtensibleContent"
      provides="opencore.tagging.interfaces.ITaggable"
      factory="opencore.tagging.content.DCSubjectTaggable"
-     />
-  <utility
-     factory="opencore.tagging.content.SitewideTagVocabularyValidator"
-     provides="opencore.tagging.interfaces.ITagValidator"
      />
 
   <browser:page
@@ -38,7 +40,7 @@
        the adapted interface? -->
 
   <browser:viewlet
-     for="opencore.interfaces.IProject" 
+     for="opencore.framework.IExtensibleContent" 
      class="opencore.tagging.browser.TagViewlet"
      permission="zope2.View"
      manager="opencore.browser.interfaces.ISidebar"
@@ -46,7 +48,7 @@
      name="tag.list"
      />
   <browser:viewlet
-     for="opencore.interfaces.IProject"
+     for="opencore.framework.IExtensibleContent"
      class="opencore.tagging.browser.TagEditViewlet"
      permission="cmf.ModifyPortalContent"
      manager="opencore.browser.editform.IEditForm"
@@ -58,6 +60,14 @@
      class="opencore.tagging.browser.TagEditViewlet"
      permission="zope2.View"
      manager="opencore.browser.editform.IEditForm"
+     name="tag.edit"
+     template="tag-edit.pt"
+     />
+
+  <browser:page
+     for="opencore.framework.IExtensibleContent"
+     class="opencore.tagging.browser.TagEditViewlet"
+     permission="zope2.View"
      name="tag.edit"
      template="tag-edit.pt"
      />
