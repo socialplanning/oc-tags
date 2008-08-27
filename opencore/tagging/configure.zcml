@@ -51,7 +51,7 @@
      for="opencore.framework.IExtensibleContent"
      class="opencore.tagging.browser.TagEditViewlet"
      permission="cmf.ModifyPortalContent"
-     manager="opencore.browser.editform.IEditForm"
+     manager="opencore.framework.editform.IEditForm"
      name="tag.edit"
      template="tag-edit.pt"
      />
