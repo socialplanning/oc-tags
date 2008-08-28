@@ -59,7 +59,7 @@
      for="opencore.interfaces.adding.IAddProject"
      class="opencore.tagging.browser.TagEditViewlet"
      permission="zope2.View"
-     manager="opencore.browser.editform.IEditForm"
+     manager="opencore.framework.editform.IEditForm"
      name="tag.edit"
      template="tag-edit.pt"
      />

@@ -1,6 +1,6 @@
 from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile
 from opencore.browser.base import BaseView
-from opencore.browser.editform import EditFormViewlet
+from opencore.framework.editform import EditFormViewlet
 from opencore.tagging.interfaces import ITaggable
 from opencore.tagging.interfaces import ITagValidator
 from opencore.tagging.interfaces import ITagQuery
